@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bkh6xrxmtbfg4"]
+
+[ext_resource type="Script" uid="uid://xcsu4fydiygw" path="res://scripts/creature/creature_animator.gd" id="1_7kapc"]
+[ext_resource type="Texture2D" uid="uid://nppwmgl2ws2n" path="res://assets/sprites/placeholder.png" id="2_4svqu"]
+
+[node name="Creature" type="Node2D" unique_id=561212246]
+
+[node name="Visual" type="Node2D" parent="." unique_id=1557604593]
+script = ExtResource("1_7kapc")
+
+[node name="Sprite2D" type="Sprite2D" parent="Visual" unique_id=1958380708]
+texture = ExtResource("2_4svqu")
+
+[node name="Detection" type="Area2D" parent="." unique_id=1704978046]

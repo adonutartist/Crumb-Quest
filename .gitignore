@@ -1,0 +1,11 @@
+.godot/
+
+.import/
+
+.DS_Store
+Thumbs.db
+
+*.tmp
+*.log
+
+.vscode/
