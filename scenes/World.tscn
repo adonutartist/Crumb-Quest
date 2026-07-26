@@ -27,3 +27,5 @@ food_scene = ExtResource("3_d1c63")
 [node name="UI" type="CanvasLayer" parent="." unique_id=1527464660]
 
 [node name="Creature" parent="." unique_id=747588286 instance=ExtResource("4_0uv0p")]
+
+[node name="Effects" type="Node2D" parent="." unique_id=462188091]

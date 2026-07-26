@@ -4,6 +4,15 @@
 [ext_resource type="Texture2D" uid="uid://u7rdb5lodht2" path="res://assets/food/apple.png" id="2_w7sr0"]
 [ext_resource type="Texture2D" uid="uid://d28m284aq5lrr" path="res://assets/food/foodhpbarbg.png" id="3_rjrnx"]
 [ext_resource type="Texture2D" uid="uid://ba8b6cihsn5d" path="res://assets/food/foodhpbarfill.png" id="4_xlmae"]
+[ext_resource type="Texture2D" uid="uid://c7vujt0jg55bl" path="res://assets/food/foodcrumb.png" id="5_xlmae"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_e08h6"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 100.0
+initial_velocity_min = 30.0
+initial_velocity_max = 50.0
+gravity = Vector3(0, 100, 0)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e08h6"]
 radius = 9.0
@@ -11,6 +20,15 @@ height = 46.0
 
 [node name="Food" type="Area2D" unique_id=12079784]
 script = ExtResource("1_2jwtx")
+
+[node name="EatParticles" type="GPUParticles2D" parent="." unique_id=249782272]
+z_index = 10
+emitting = false
+amount = 10
+texture = ExtResource("5_xlmae")
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_e08h6")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1883903606]
 texture = ExtResource("2_w7sr0")

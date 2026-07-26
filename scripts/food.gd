@@ -4,6 +4,7 @@ extends Area2D
 var hp := 100.0
 @onready var hp_bar = $HPBar
 @onready var hp_fill = $HPBar/Fill
+const EAT_PARTICLES = preload("res://scenes/eat_particles.tscn")
 const FALL_SPEED := 250.0
 var collected := false
 var landed := false
@@ -17,6 +18,11 @@ func  damage(amount):
 		return
 	hp_bar.visible = true
 	hp -= amount
+	var particles = EAT_PARTICLES.instantiate()
+	get_tree().current_scene.get_node("Effects").add_child(particles)
+	particles.global_position = global_position
+	particles.restart()
+	particles.emitting = true
 	hp = clamp(hp, 0.0, max_hp)
 	var ratio = hp / max_hp
 	if ratio > 0.75:
