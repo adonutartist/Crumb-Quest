@@ -1,3 +1,19 @@
 [gd_scene format=3 uid="uid://bropvpnmx5cjh"]
 
-[node name="Food" type="Node2D" unique_id=1963126437]
+[ext_resource type="Script" uid="uid://x25ifqdbvdv3" path="res://scripts/food.gd" id="1_2jwtx"]
+[ext_resource type="Texture2D" uid="uid://u7rdb5lodht2" path="res://assets/food/apple.png" id="2_w7sr0"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e08h6"]
+radius = 31.0
+height = 70.0
+
+[node name="Food" type="Area2D" unique_id=12079784]
+script = ExtResource("1_2jwtx")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1883903606]
+position = Vector2(91, 0)
+texture = ExtResource("2_w7sr0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=779743615]
+position = Vector2(88, 0)
+shape = SubResource("CapsuleShape2D_e08h6")

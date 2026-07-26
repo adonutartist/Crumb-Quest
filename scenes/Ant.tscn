@@ -1,5 +1,35 @@
 [gd_scene format=3 uid="uid://c6fdji7i1ccrm"]
 
 [ext_resource type="PackedScene" uid="uid://bkh6xrxmtbfg4" path="res://scenes/Creature.tscn" id="1_aytf3"]
+[ext_resource type="Texture2D" uid="uid://cp2oft4rtmoq8" path="res://assets/creatures/ant/ant1.png" id="2_515oq"]
+[ext_resource type="Script" uid="uid://d2o72786a45vp" path="res://scripts/ant.gd" id="2_jvskq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_515oq"]
+atlas = ExtResource("2_515oq")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jvskq"]
+atlas = ExtResource("2_515oq")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wujti"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_515oq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jvskq")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 3.0
+}]
 
 [node name="Ant" unique_id=561212246 instance=ExtResource("1_aytf3")]
+script = ExtResource("2_jvskq")
+
+[node name="Sprite2D" parent="Visual" parent_id_path=PackedInt32Array(1557604593) index="0" unique_id=941488090]
+sprite_frames = SubResource("SpriteFrames_wujti")
+animation = &"idle"
+frame_progress = 0.20841733

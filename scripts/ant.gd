@@ -1,17 +1,40 @@
 extends Node2D
-@onready var  sprite: Sprite2D = $Sprite2D
-func _ready():
-	idle_loop()
-func idle_loop():
-	while true: 
-		var tween = create_tween() 
-		tween.set_parallel() 
-		tween.tween_property(sprite, "scale", Vector2(1.08, 0.92), 0.18).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
-		tween.tween_property(sprite, "rotation_degrees", 3, 0.18)
-		await tween.finished
-		tween = create_tween()
-		tween.set_parallel()
-		tween.tween_property(sprite, "scale", Vector2.ONE, 0.25).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
-		tween.tween_property(sprite, "rotation_degrees", 0, 0.25)
-		await  tween.finished
-		await get_tree().create_timer(randf_range(0.8, 2.0)).timeout
+@export var speed := 100.0
+var target_food: Node2D = null
+@onready var animator = $Visual
+@onready var sprite = $Visual/Sprite2D
+var moving := false
+func  _process(delta):
+	find_food()
+	if target_food:
+		var distance = global_position.distance_to(target_food.global_position)
+		if distance > 20:
+			if not moving:
+				animator.start_move()
+				moving = true
+			var direction = global_position.direction_to(target_food.global_position)
+			global_position += direction * speed * delta
+			sprite.flip_h = direction.x < 0
+			animator.start_move()
+		else:
+			if moving:
+				animator.stop_move()
+				moving = false
+			animator.stop_move()
+	else:
+		animator.stop_move()
+func  find_food():
+	var foods = get_tree().get_nodes_in_group("food")
+	if foods.is_empty():
+		target_food = null
+		return
+	var closest_food = null
+	var closest_distance = INF
+	for food in foods:
+		if not food.landed:
+			continue
+		var distance = global_position.distance_to(food.global_position)
+		if distance < closest_distance:
+			closest_distance = distance
+			closest_food = food
+	target_food = closest_food
