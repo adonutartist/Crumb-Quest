@@ -8,7 +8,8 @@ func  _process(delta):
 	find_food()
 	if target_food:
 		var distance = global_position.distance_to(target_food.global_position)
-		if distance > 20:
+		print(distance)
+		if distance > 50:
 			if not moving:
 				animator.start_move()
 				moving = true
@@ -20,9 +21,12 @@ func  _process(delta):
 			if moving:
 				animator.stop_move()
 				moving = false
-			animator.stop_move()
+			if is_instance_valid(target_food):
+				target_food.damage(25 * delta)
 	else:
 		animator.stop_move()
+	if target_food and !is_instance_valid(target_food):
+		target_food = null
 func  find_food():
 	var foods = get_tree().get_nodes_in_group("food")
 	if foods.is_empty():

@@ -2,18 +2,34 @@
 
 [ext_resource type="Script" uid="uid://x25ifqdbvdv3" path="res://scripts/food.gd" id="1_2jwtx"]
 [ext_resource type="Texture2D" uid="uid://u7rdb5lodht2" path="res://assets/food/apple.png" id="2_w7sr0"]
+[ext_resource type="Texture2D" uid="uid://d28m284aq5lrr" path="res://assets/food/foodhpbarbg.png" id="3_rjrnx"]
+[ext_resource type="Texture2D" uid="uid://ba8b6cihsn5d" path="res://assets/food/foodhpbarfill.png" id="4_xlmae"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e08h6"]
-radius = 31.0
-height = 70.0
+radius = 9.0
+height = 46.0
 
 [node name="Food" type="Area2D" unique_id=12079784]
 script = ExtResource("1_2jwtx")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1883903606]
-position = Vector2(91, 0)
 texture = ExtResource("2_w7sr0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=779743615]
-position = Vector2(88, 0)
 shape = SubResource("CapsuleShape2D_e08h6")
+
+[node name="HPBar" type="Node2D" parent="." unique_id=2111994203]
+position = Vector2(-4, -43)
+scale = Vector2(1.5, 1.5)
+
+[node name="BG" type="Sprite2D" parent="HPBar" unique_id=1678824189]
+z_index = 2
+texture = ExtResource("3_rjrnx")
+
+[node name="Fill" type="Sprite2D" parent="HPBar" unique_id=1378066252]
+z_index = 1
+position = Vector2(-15, -3)
+texture = ExtResource("4_xlmae")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 30, 6)
