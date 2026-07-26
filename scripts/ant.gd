@@ -16,7 +16,7 @@ func  _process(delta):
 			var direction = global_position.direction_to(target_food.global_position)
 			global_position += direction * speed * delta
 			sprite.flip_h = direction.x < 0
-			animator.start_move()
+			
 		else:
 			if moving:
 				animator.stop_move()
