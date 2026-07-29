@@ -1,5 +1,7 @@
 extends  Node2D
-@export var food_scene: PackedScene
+@export var beans_scene: PackedScene
+@export var apple_scene: PackedScene
+@export var nachos_scene: PackedScene
 @export var  spawn_interval := 1.5
 @export var max_food := 20
 const MIN_DISTANCE := 80.0
@@ -14,6 +16,14 @@ func _ready():
 	timer.autostart = true
 	timer.timeout.connect(spawn_food)
 	add_child(timer)
+func get_random_food() -> PackedScene:
+	var roll = randi_range(1, 100)
+	if roll <= 60:
+		return beans_scene
+	elif roll <= 90:
+		return apple_scene
+	else:
+		return nachos_scene
 func spawn_food():
 	var current_food = get_tree().get_nodes_in_group("food")
 	if current_food.size() >= max_food:
@@ -22,7 +32,7 @@ func spawn_food():
 	if spawn_positon == null:
 		print("No valid position")
 		return
-	var food = food_scene.instantiate()
+	var food = get_random_food().instantiate()
 	food.position = Vector2(spawn_positon.x, -500)
 	food.target_y = spawn_positon.y
 	get_parent().get_node("Foods").add_child(food)
@@ -41,4 +51,4 @@ func get_valid_position():
 				break
 		if valid:
 			return pos
-		return null
+	return null

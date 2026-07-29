@@ -4,6 +4,8 @@ var target_food: Node2D = null
 @onready var animator = $Visual
 @onready var sprite = $Visual/Sprite2D
 var moving := false
+var bite_timer := 0.0
+const BITE_INTERVAL := 0.4
 func  _process(delta):
 	find_food()
 	if target_food:
@@ -22,7 +24,10 @@ func  _process(delta):
 				animator.stop_move()
 				moving = false
 			if is_instance_valid(target_food):
-				target_food.damage(25 * delta)
+				bite_timer -= delta
+				if bite_timer <= 0:
+					bite_timer = BITE_INTERVAL
+					target_food.damage(4)
 	else:
 		animator.stop_move()
 	if target_food and !is_instance_valid(target_food):

@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://du64k8fwwsbh0"]
+
+[ext_resource type="Script" uid="uid://x25ifqdbvdv3" path="res://scripts/food.gd" id="1_a7wfc"]
+[ext_resource type="Texture2D" uid="uid://u7rdb5lodht2" path="res://assets/food/apple.png" id="3_bpq8q"]
+[ext_resource type="Texture2D" uid="uid://d28m284aq5lrr" path="res://assets/food/foodhpbarbg.png" id="4_o1f1w"]
+[ext_resource type="Texture2D" uid="uid://ba8b6cihsn5d" path="res://assets/food/foodhpbarfill.png" id="5_3l3tj"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e08h6"]
+radius = 9.0
+height = 46.0
+
+[node name="Apple" type="Area2D" unique_id=12079784]
+script = ExtResource("1_a7wfc")
+value = 3
+max_hp = 250.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1883903606]
+texture = ExtResource("3_bpq8q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=779743615]
+shape = SubResource("CapsuleShape2D_e08h6")
+
+[node name="HPBar" type="Node2D" parent="." unique_id=2111994203]
+position = Vector2(-4, -43)
+scale = Vector2(1.5, 1.5)
+
+[node name="BG" type="Sprite2D" parent="HPBar" unique_id=1678824189]
+z_index = 2
+texture = ExtResource("4_o1f1w")
+
+[node name="Fill" type="Sprite2D" parent="HPBar" unique_id=1378066252]
+z_index = 1
+position = Vector2(-15, -3)
+texture = ExtResource("5_3l3tj")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 30, 6)
