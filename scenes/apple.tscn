@@ -21,7 +21,7 @@ texture = ExtResource("3_bpq8q")
 shape = SubResource("CapsuleShape2D_e08h6")
 
 [node name="HPBar" type="Node2D" parent="." unique_id=2111994203]
-position = Vector2(-4, -43)
+position = Vector2(0, -42)
 scale = Vector2(1.5, 1.5)
 
 [node name="BG" type="Sprite2D" parent="HPBar" unique_id=1678824189]

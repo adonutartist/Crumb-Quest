@@ -3,33 +3,48 @@
 [ext_resource type="PackedScene" uid="uid://bkh6xrxmtbfg4" path="res://scenes/Creature.tscn" id="1_aytf3"]
 [ext_resource type="Texture2D" uid="uid://cp2oft4rtmoq8" path="res://assets/creatures/ant/ant1.png" id="2_515oq"]
 [ext_resource type="Script" uid="uid://d2o72786a45vp" path="res://scripts/ant.gd" id="2_jvskq"]
+[ext_resource type="Shader" uid="uid://bque1s8tmk3w4" path="res://shader/outline.gdshader" id="3_t4isj"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jvskq"]
-atlas = ExtResource("2_515oq")
-region = Rect2(0, 0, 44, 36)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_klvc7"]
+shader = ExtResource("3_t4isj")
+shader_parameter/selected = false
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/outline_size = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t4isj"]
 atlas = ExtResource("2_515oq")
-region = Rect2(44, 0, 44, 36)
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ug3fr"]
+atlas = ExtResource("2_515oq")
+region = Rect2(96, 0, 96, 96)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wujti"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jvskq")
+"texture": SubResource("AtlasTexture_t4isj")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_t4isj")
+"texture": SubResource("AtlasTexture_ug3fr")
 }],
 "loop": 1,
 "name": &"idle",
 "speed": 8.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t4isj"]
+size = Vector2(34, 27)
+
 [node name="Ant" unique_id=561212246 instance=ExtResource("1_aytf3")]
 script = ExtResource("2_jvskq")
 
 [node name="Sprite2D" parent="Visual" parent_id_path=PackedInt32Array(1557604593) index="0" unique_id=941488090]
+material = SubResource("ShaderMaterial_klvc7")
 sprite_frames = SubResource("SpriteFrames_wujti")
 animation = &"idle"
 frame_progress = 0.4027416
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detection" parent_id_path=PackedInt32Array(1704978046) index="0" unique_id=1962781716]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_t4isj")

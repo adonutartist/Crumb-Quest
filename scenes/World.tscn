@@ -7,6 +7,14 @@
 [ext_resource type="PackedScene" uid="uid://caq8jyv6w6os1" path="res://scenes/beans.tscn" id="4_b3faq"]
 [ext_resource type="PackedScene" uid="uid://du64k8fwwsbh0" path="res://scenes/apple.tscn" id="5_ygioq"]
 [ext_resource type="PackedScene" uid="uid://cncflg544crqc" path="res://scenes/nachos.tscn" id="6_pdh0q"]
+[ext_resource type="Script" uid="uid://cgi3vyyfo4w6t" path="res://scripts/ui.gd" id="7_ygioq"]
+[ext_resource type="Texture2D" uid="uid://c7vujt0jg55bl" path="res://assets/food/foodcrumb.png" id="8_pdh0q"]
+[ext_resource type="FontFile" uid="uid://ckw7fyq08ptfb" path="res://assets/ui/augiepixel.ttf" id="9_pdh0q"]
+[ext_resource type="PackedScene" uid="uid://c2wxl08yum4br" path="res://scenes/recruit_card.tscn" id="10_c0d7e"]
+[ext_resource type="Script" uid="uid://ckudhonoq5alt" path="res://scripts/cursor.gd" id="11_h1bdy"]
+[ext_resource type="PackedScene" uid="uid://dpk6f81qqt61k" path="res://scenes/cursor.tscn" id="11_i4b1j"]
+[ext_resource type="Texture2D" uid="uid://c7cgafwqbbeqi" path="res://assets/ui/Normal Texture.png" id="12_nrtoj"]
+[ext_resource type="Texture2D" uid="uid://c73cw3qgrstfi" path="res://assets/ui/Click Texture.png" id="13_i4b1j"]
 
 [node name="World" type="Node2D" unique_id=1421476009]
 
@@ -29,7 +37,79 @@ apple_scene = ExtResource("5_ygioq")
 nachos_scene = ExtResource("6_pdh0q")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1527464660]
+script = ExtResource("7_ygioq")
+
+[node name="TopRight" type="MarginContainer" parent="UI" unique_id=1529598872]
+offset_right = 46.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/TopRight" unique_id=63004541]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="UI/TopRight/HBoxContainer" unique_id=850411905]
+layout_mode = 2
+texture = ExtResource("8_pdh0q")
+
+[node name="CrumbLabel" type="Label" parent="UI/TopRight/HBoxContainer" unique_id=659159841]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("9_pdh0q")
+theme_override_font_sizes/font_size = 40
+
+[node name="RecruitPanel" type="Control" parent="UI" unique_id=1776682873]
+layout_mode = 3
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -200.0
+offset_right = 200.0
+offset_bottom = 200.0
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/RecruitPanel" unique_id=731755470]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="RecruitCard" parent="UI/RecruitPanel/VBoxContainer" unique_id=1684510938 instance=ExtResource("10_c0d7e")]
+custom_minimum_size = Vector2(-180, 80)
+layout_mode = 2
+stretch_mode = 5
+insect_scene = ExtResource("2_1lgw5")
+
+[node name="RecruitCard2" parent="UI/RecruitPanel/VBoxContainer" unique_id=428439345 instance=ExtResource("10_c0d7e")]
+custom_minimum_size = Vector2(-180, 80)
+layout_mode = 2
+stretch_mode = 5
+insect_scene = ExtResource("2_1lgw5")
+cost = 25
+
+[node name="RecruitCard3" parent="UI/RecruitPanel/VBoxContainer" unique_id=1784140733 instance=ExtResource("10_c0d7e")]
+custom_minimum_size = Vector2(-180, 80)
+layout_mode = 2
+stretch_mode = 5
+insect_scene = ExtResource("2_1lgw5")
+cost = 50
+
+[node name="RecruitCard4" parent="UI/RecruitPanel/VBoxContainer" unique_id=977297566 instance=ExtResource("10_c0d7e")]
+custom_minimum_size = Vector2(-180, 80)
+layout_mode = 2
+stretch_mode = 5
+insect_scene = ExtResource("2_1lgw5")
+cost = 100
 
 [node name="Creature" parent="." unique_id=747588286 instance=ExtResource("4_0uv0p")]
 
 [node name="Effects" type="Node2D" parent="." unique_id=462188091]
+
+[node name="Cursor" parent="." unique_id=534834897 instance=ExtResource("11_i4b1j")]
+z_index = 4096
+script = ExtResource("11_h1bdy")
+normal_texture = ExtResource("12_nrtoj")
+click_texture = ExtResource("13_i4b1j")
+
+[node name="CursorSprite" type="Sprite2D" parent="Cursor" unique_id=1745442335]
+offset = Vector2(10, 10)

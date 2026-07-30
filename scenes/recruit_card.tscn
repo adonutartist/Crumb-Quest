@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://c2wxl08yum4br"]
+
+[ext_resource type="Script" uid="uid://6tsjfbf8x7ee" path="res://scripts/recruit_card.gd" id="1_obdi2"]
+
+[node name="RecruitCard" type="TextureButton" unique_id=1684510938]
+offset_right = 150.0
+offset_bottom = 80.0
+script = ExtResource("1_obdi2")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=787908291]
+
+[node name="CostLabel" type="Label" parent="." unique_id=1679959956]
+z_index = 2
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 50.0
+offset_bottom = 33.0
+
+[node name="NameLabel" type="Label" parent="." unique_id=138772321]
+z_index = 2
+layout_mode = 0
+offset_left = 10.0
+offset_top = 40.0
+offset_right = 50.0
+offset_bottom = 63.0

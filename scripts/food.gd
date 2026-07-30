@@ -35,6 +35,7 @@ func  damage(amount):
 		hp_fill.modulate = Color("#ff5c5c")	
 	hp_fill.region_rect.size.x = 30 * ratio
 	if hp <= 0:
+		GameManager.add_crumbs(value)
 		queue_free()
 func  _process(delta):
 	if collected:

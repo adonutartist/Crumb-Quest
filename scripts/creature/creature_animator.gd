@@ -26,7 +26,7 @@ func start_move():
 		.set_trans(Tween.TRANS_ELASTIC)\
 		.set_ease(Tween.EASE_OUT)
 func stop_move():
-	print("STOP MOVE")
+	
 
 	if move_tween:
 		move_tween.kill()

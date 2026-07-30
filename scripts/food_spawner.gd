@@ -18,9 +18,9 @@ func _ready():
 	add_child(timer)
 func get_random_food() -> PackedScene:
 	var roll = randi_range(1, 100)
-	if roll <= 60:
+	if roll <= 70:
 		return beans_scene
-	elif roll <= 90:
+	elif roll <= 95:
 		return apple_scene
 	else:
 		return nachos_scene

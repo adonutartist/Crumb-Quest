@@ -3,14 +3,19 @@ extends Node2D
 var target_food: Node2D = null
 @onready var animator = $Visual
 @onready var sprite = $Visual/Sprite2D
+var sprite_material: ShaderMaterial
 var moving := false
 var bite_timer := 0.0
 const BITE_INTERVAL := 0.4
+func _ready():
+	$Detection.input_event.connect(_on_detection_input_event)
+	sprite.material = sprite.material.duplicate()
+	sprite_material = sprite.material as ShaderMaterial
 func  _process(delta):
 	find_food()
 	if target_food:
 		var distance = global_position.distance_to(target_food.global_position)
-		print(distance)
+		
 		if distance > 50:
 			if not moving:
 				animator.start_move()
@@ -47,3 +52,12 @@ func  find_food():
 			closest_distance = distance
 			closest_food = food
 	target_food = closest_food
+func set_selected(selected: bool):
+	if sprite_material:
+		sprite_material.set_shader_parameter("selected", selected)
+func _on_detection_input_event(_viewport, event, _shape_idx):
+	if event is InputEventMouseButton \
+	and event.button_index == MOUSE_BUTTON_LEFT \
+	and event.pressed:
+		print("ant clicked")
+		GameManager.select_creature(self)
