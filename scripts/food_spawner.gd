@@ -5,7 +5,7 @@ extends  Node2D
 @export var  spawn_interval := 1.5
 @export var max_food := 20
 const MIN_DISTANCE := 80.0
-const  AREA_LEFT := -500
+const  AREA_LEFT := -300
 const  AREA_RIGHT := 500
 const AREA_TOP := -250
 const  AREA_BOTTOM := 250

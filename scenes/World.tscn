@@ -11,10 +11,17 @@
 [ext_resource type="Texture2D" uid="uid://c7vujt0jg55bl" path="res://assets/food/foodcrumb.png" id="8_pdh0q"]
 [ext_resource type="FontFile" uid="uid://ckw7fyq08ptfb" path="res://assets/ui/augiepixel.ttf" id="9_pdh0q"]
 [ext_resource type="PackedScene" uid="uid://c2wxl08yum4br" path="res://scenes/recruit_card.tscn" id="10_c0d7e"]
+[ext_resource type="Texture2D" uid="uid://dif4l0mh7m7uk" path="res://assets/ui/blackant.png" id="11_44lqw"]
 [ext_resource type="Script" uid="uid://ckudhonoq5alt" path="res://scripts/cursor.gd" id="11_h1bdy"]
 [ext_resource type="PackedScene" uid="uid://dpk6f81qqt61k" path="res://scenes/cursor.tscn" id="11_i4b1j"]
+[ext_resource type="Texture2D" uid="uid://cj8vi3hl3c06w" path="res://assets/ui/redant.png" id="12_dwmkc"]
 [ext_resource type="Texture2D" uid="uid://c7cgafwqbbeqi" path="res://assets/ui/Normal Texture.png" id="12_nrtoj"]
+[ext_resource type="Texture2D" uid="uid://d111aiv8f2q4y" path="res://assets/ui/beetle.png" id="13_30fn3"]
 [ext_resource type="Texture2D" uid="uid://c73cw3qgrstfi" path="res://assets/ui/Click Texture.png" id="13_i4b1j"]
+[ext_resource type="Texture2D" uid="uid://c2mog64mc8hoc" path="res://assets/ui/ladybug.png" id="14_dgldv"]
+[ext_resource type="Script" uid="uid://cgrpyrl3fl7rc" path="res://scripts/upgrade_popup.gd" id="15_30fn3"]
+[ext_resource type="Texture2D" uid="uid://bc2vr3x48fqib" path="res://assets/ui/card_bg.png" id="16_dgldv"]
+[ext_resource type="PackedScene" uid="uid://dwlchxdpapi1r" path="res://scenes/ant_hill.tscn" id="20_dwmkc"]
 
 [node name="World" type="Node2D" unique_id=1421476009]
 
@@ -27,6 +34,7 @@
 [node name="Ants" type="Node2D" parent="." unique_id=1525651261]
 
 [node name="Ant" parent="Ants" unique_id=561212246 instance=ExtResource("2_1lgw5")]
+position = Vector2(-500, 250)
 
 [node name="Foods" type="Node2D" parent="." unique_id=406211046]
 
@@ -40,8 +48,10 @@ nachos_scene = ExtResource("6_pdh0q")
 script = ExtResource("7_ygioq")
 
 [node name="TopRight" type="MarginContainer" parent="UI" unique_id=1529598872]
-offset_right = 46.0
-offset_bottom = 40.0
+offset_left = 45.0
+offset_top = 20.0
+offset_right = 91.0
+offset_bottom = 60.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/TopRight" unique_id=63004541]
 layout_mode = 2
@@ -79,12 +89,14 @@ custom_minimum_size = Vector2(-180, 80)
 layout_mode = 2
 stretch_mode = 5
 insect_scene = ExtResource("2_1lgw5")
+insect_icon = ExtResource("11_44lqw")
 
 [node name="RecruitCard2" parent="UI/RecruitPanel/VBoxContainer" unique_id=428439345 instance=ExtResource("10_c0d7e")]
 custom_minimum_size = Vector2(-180, 80)
 layout_mode = 2
 stretch_mode = 5
 insect_scene = ExtResource("2_1lgw5")
+insect_icon = ExtResource("12_dwmkc")
 cost = 25
 
 [node name="RecruitCard3" parent="UI/RecruitPanel/VBoxContainer" unique_id=1784140733 instance=ExtResource("10_c0d7e")]
@@ -92,6 +104,7 @@ custom_minimum_size = Vector2(-180, 80)
 layout_mode = 2
 stretch_mode = 5
 insect_scene = ExtResource("2_1lgw5")
+insect_icon = ExtResource("13_30fn3")
 cost = 50
 
 [node name="RecruitCard4" parent="UI/RecruitPanel/VBoxContainer" unique_id=977297566 instance=ExtResource("10_c0d7e")]
@@ -99,17 +112,67 @@ custom_minimum_size = Vector2(-180, 80)
 layout_mode = 2
 stretch_mode = 5
 insect_scene = ExtResource("2_1lgw5")
+insect_icon = ExtResource("14_dgldv")
 cost = 100
+
+[node name="UpgradePopup" type="Control" parent="UI" unique_id=1127739752]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("15_30fn3")
+
+[node name="UpgradeButton" type="TextureButton" parent="UI/UpgradePopup" unique_id=550456704]
+layout_mode = 0
+offset_left = -20.0
+offset_top = -30.0
+offset_right = 76.0
+offset_bottom = 34.0
+texture_normal = ExtResource("16_dgldv")
+
+[node name="CostLabel" type="Label" parent="UI/UpgradePopup/UpgradeButton" unique_id=1286216580]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 33.0
+offset_right = 75.0
+offset_bottom = 56.0
+theme_override_fonts/font = ExtResource("9_pdh0q")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="UI/UpgradePopup/UpgradeButton" unique_id=750942424]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 10.0
+offset_right = 85.0
+offset_bottom = 34.0
+theme_override_fonts/font = ExtResource("9_pdh0q")
+theme_override_font_sizes/font_size = 25
+text = "EVOLVE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CrumbIcon" type="Sprite2D" parent="UI/UpgradePopup/UpgradeButton" unique_id=902324271]
+position = Vector2(34, 43.000004)
+scale = Vector2(0.55346936, 0.5534694)
+texture = ExtResource("8_pdh0q")
 
 [node name="Creature" parent="." unique_id=747588286 instance=ExtResource("4_0uv0p")]
 
 [node name="Effects" type="Node2D" parent="." unique_id=462188091]
 
-[node name="Cursor" parent="." unique_id=534834897 instance=ExtResource("11_i4b1j")]
+[node name="CursorLayer" type="CanvasLayer" parent="." unique_id=2053740454]
+layer = 10
+
+[node name="Cursor" parent="CursorLayer" unique_id=534834897 instance=ExtResource("11_i4b1j")]
 z_index = 4096
 script = ExtResource("11_h1bdy")
 normal_texture = ExtResource("12_nrtoj")
 click_texture = ExtResource("13_i4b1j")
 
-[node name="CursorSprite" type="Sprite2D" parent="Cursor" unique_id=1745442335]
+[node name="CursorSprite" type="Sprite2D" parent="CursorLayer/Cursor" unique_id=1745442335]
 offset = Vector2(10, 10)
+
+[node name="SpawnPoint" type="Node2D" parent="." unique_id=1860148657]
+
+[node name="AntHill" parent="SpawnPoint" unique_id=199588395 instance=ExtResource("20_dwmkc")]

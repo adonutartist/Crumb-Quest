@@ -1,21 +1,32 @@
 [gd_scene format=3 uid="uid://c2wxl08yum4br"]
 
 [ext_resource type="Script" uid="uid://6tsjfbf8x7ee" path="res://scripts/recruit_card.gd" id="1_obdi2"]
+[ext_resource type="Texture2D" uid="uid://bc2vr3x48fqib" path="res://assets/ui/card_bg.png" id="1_stw7x"]
+[ext_resource type="FontFile" uid="uid://ckw7fyq08ptfb" path="res://assets/ui/augiepixel.ttf" id="3_i3q3x"]
+[ext_resource type="Texture2D" uid="uid://d111aiv8f2q4y" path="res://assets/ui/beetle.png" id="3_k5jn6"]
+[ext_resource type="Texture2D" uid="uid://c7vujt0jg55bl" path="res://assets/food/foodcrumb.png" id="5_y2alv"]
 
 [node name="RecruitCard" type="TextureButton" unique_id=1684510938]
 offset_right = 150.0
 offset_bottom = 80.0
+texture_normal = ExtResource("1_stw7x")
 script = ExtResource("1_obdi2")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=787908291]
+position = Vector2(74, 39)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_k5jn6")
 
 [node name="CostLabel" type="Label" parent="." unique_id=1679959956]
 z_index = 2
 layout_mode = 0
-offset_left = 10.0
-offset_top = 10.0
-offset_right = 50.0
-offset_bottom = 33.0
+offset_left = 100.0
+offset_top = 40.0
+offset_right = 140.0
+offset_bottom = 74.0
+theme_override_fonts/font = ExtResource("3_i3q3x")
+theme_override_font_sizes/font_size = 34
+horizontal_alignment = 2
 
 [node name="NameLabel" type="Label" parent="." unique_id=138772321]
 z_index = 2
@@ -24,3 +35,8 @@ offset_left = 10.0
 offset_top = 40.0
 offset_right = 50.0
 offset_bottom = 63.0
+
+[node name="crumbicon" type="Sprite2D" parent="." unique_id=432478564]
+position = Vector2(123, 27)
+scale = Vector2(0.94285715, 0.94285715)
+texture = ExtResource("5_y2alv")

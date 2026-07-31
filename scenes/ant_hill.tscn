@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dwlchxdpapi1r"]
+
+[ext_resource type="Texture2D" uid="uid://duvligc8okw4i" path="res://assets/ui/anthill.png" id="1_xpm4y"]
+
+[node name="AntHill" type="Node2D" unique_id=199588395]
+position = Vector2(-500, 230)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2082825872]
+scale = Vector2(3, 3)
+texture = ExtResource("1_xpm4y")

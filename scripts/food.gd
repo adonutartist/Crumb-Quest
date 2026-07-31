@@ -9,6 +9,7 @@ const FALL_SPEED := 250.0
 var collected := false
 var landed := false
 var target_y := 0.0
+var assigned_creatures := []
 func _ready():
 	add_to_group("food")
 	hp = max_hp
@@ -44,3 +45,5 @@ func  _process(delta):
 		position.y += FALL_SPEED * delta
 	else:
 		landed = true
+func can_be_eaten_by_more():
+	return assigned_creatures.size() < 2
