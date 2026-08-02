@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://duvligc8okw4i" path="res://assets/ui/anthill.png" id="1_xpm4y"]
 
 [node name="AntHill" type="Node2D" unique_id=199588395]
-position = Vector2(-500, 230)
+position = Vector2(-500, 300)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2082825872]
 scale = Vector2(3, 3)

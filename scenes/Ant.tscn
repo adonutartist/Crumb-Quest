@@ -35,11 +35,14 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t4isj"]
-size = Vector2(34, 27)
+size = Vector2(25, 13)
 
 [node name="Ant" unique_id=561212246 instance=ExtResource("1_aytf3")]
 script = ExtResource("2_jvskq")
+speed = 80.0
+upgrade_cost = 1
 upgrade_scene = ExtResource("3_ug3fr")
+bite_damage = 3
 
 [node name="Sprite2D" parent="Visual" parent_id_path=PackedInt32Array(1557604593) index="0" unique_id=941488090]
 material = SubResource("ShaderMaterial_klvc7")
@@ -48,5 +51,5 @@ animation = &"idle"
 frame_progress = 0.4027416
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Detection" parent_id_path=PackedInt32Array(1704978046) index="0" unique_id=1962781716]
-position = Vector2(0, -0.5)
+position = Vector2(-3.5, -0.5)
 shape = SubResource("RectangleShape2D_t4isj")

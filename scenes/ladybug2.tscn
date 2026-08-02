@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://c67w03hdxt2u1"]
+
+[ext_resource type="PackedScene" uid="uid://bkh6xrxmtbfg4" path="res://scenes/Creature.tscn" id="1_j361c"]
+[ext_resource type="Script" uid="uid://d2o72786a45vp" path="res://scripts/ant.gd" id="2_povnd"]
+[ext_resource type="PackedScene" uid="uid://b5cfrdqdp77n1" path="res://scenes/ladybug3.tscn" id="3_t05v3"]
+[ext_resource type="Shader" uid="uid://bque1s8tmk3w4" path="res://shader/outline.gdshader" id="4_yshyn"]
+[ext_resource type="Texture2D" uid="uid://d1c14cyk1e4x4" path="res://assets/creatures/ladybug/ladybug2.png" id="5_t05v3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_klvc7"]
+shader = ExtResource("4_yshyn")
+shader_parameter/selected = false
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/outline_size = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bjvnv"]
+atlas = ExtResource("5_t05v3")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5754g"]
+atlas = ExtResource("5_t05v3")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wujti"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bjvnv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5754g")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t4isj"]
+size = Vector2(56, 54)
+
+[node name="Ant" unique_id=561212246 instance=ExtResource("1_j361c")]
+script = ExtResource("2_povnd")
+speed = 40.0
+upgrade_cost = 1
+upgrade_scene = ExtResource("3_t05v3")
+bite_damage = 12
+
+[node name="Sprite2D" parent="Visual" parent_id_path=PackedInt32Array(1557604593) index="0" unique_id=941488090]
+material = SubResource("ShaderMaterial_klvc7")
+sprite_frames = SubResource("SpriteFrames_wujti")
+animation = &"idle"
+frame_progress = 0.4027416
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detection" parent_id_path=PackedInt32Array(1704978046) index="0" unique_id=1962781716]
+position = Vector2(2, -2)
+shape = SubResource("RectangleShape2D_t4isj")

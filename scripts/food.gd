@@ -1,11 +1,17 @@
 extends Area2D
 @export var  value := 1
+enum FoodType{
+	APPLE,
+	NACHOS
+}
+@export var food_type: FoodType
 @export var max_hp := 100.0
 var hp := 100.0
 @onready var hp_bar = $HPBar
 @onready var hp_fill = $HPBar/Fill
 const EAT_PARTICLES = preload("res://scenes/eat_particles.tscn")
 const FALL_SPEED := 250.0
+var shadow: Node2D = null
 var collected := false
 var landed := false
 var target_y := 0.0
@@ -44,6 +50,9 @@ func  _process(delta):
 	if position.y < target_y:
 		position.y += FALL_SPEED * delta
 	else:
-		landed = true
+		if !landed:
+			landed = true
+			if shadow:
+				shadow.queue_free()
 func can_be_eaten_by_more():
 	return assigned_creatures.size() < 2

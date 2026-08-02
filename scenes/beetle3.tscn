@@ -1,32 +1,32 @@
-[gd_scene format=3 uid="uid://biokxaaij3qhe"]
+[gd_scene format=3 uid="uid://dt0nrioy4jf7s"]
 
-[ext_resource type="PackedScene" uid="uid://bkh6xrxmtbfg4" path="res://scenes/Creature.tscn" id="1_4c021"]
-[ext_resource type="Script" uid="uid://d2o72786a45vp" path="res://scripts/ant.gd" id="2_4k2gq"]
-[ext_resource type="Shader" uid="uid://bque1s8tmk3w4" path="res://shader/outline.gdshader" id="3_0ak7x"]
-[ext_resource type="Texture2D" uid="uid://c4ssspmdhsbw7" path="res://assets/creatures/ant/ant3.png" id="4_4c021"]
+[ext_resource type="PackedScene" uid="uid://bkh6xrxmtbfg4" path="res://scenes/Creature.tscn" id="1_su2jc"]
+[ext_resource type="Script" uid="uid://d2o72786a45vp" path="res://scripts/ant.gd" id="2_xdc0a"]
+[ext_resource type="Shader" uid="uid://bque1s8tmk3w4" path="res://shader/outline.gdshader" id="4_nx0wt"]
+[ext_resource type="Texture2D" uid="uid://bhcmclik33b8w" path="res://assets/creatures/beetle/beetle3.png" id="5_su2jc"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_klvc7"]
-shader = ExtResource("3_0ak7x")
+shader = ExtResource("4_nx0wt")
 shader_parameter/selected = false
 shader_parameter/outline_color = Color(1, 1, 1, 1)
 shader_parameter/outline_size = 1.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4k2gq"]
-atlas = ExtResource("4_4c021")
+[sub_resource type="AtlasTexture" id="AtlasTexture_xdc0a"]
+atlas = ExtResource("5_su2jc")
 region = Rect2(0, 0, 96, 96)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0ak7x"]
-atlas = ExtResource("4_4c021")
+[sub_resource type="AtlasTexture" id="AtlasTexture_gxacf"]
+atlas = ExtResource("5_su2jc")
 region = Rect2(96, 0, 96, 96)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wujti"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4k2gq")
+"texture": SubResource("AtlasTexture_xdc0a")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0ak7x")
+"texture": SubResource("AtlasTexture_gxacf")
 }],
 "loop": 1,
 "name": &"idle",
@@ -34,13 +34,13 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t4isj"]
-size = Vector2(42, 25)
+size = Vector2(63, 46)
 
-[node name="Ant" unique_id=561212246 instance=ExtResource("1_4c021")]
-script = ExtResource("2_4k2gq")
-speed = 200.0
+[node name="Ant" unique_id=561212246 instance=ExtResource("1_su2jc")]
+script = ExtResource("2_xdc0a")
+speed = 40.0
 upgrade_cost = 0
-bite_damage = 12
+bite_damage = 20
 
 [node name="Sprite2D" parent="Visual" parent_id_path=PackedInt32Array(1557604593) index="0" unique_id=941488090]
 material = SubResource("ShaderMaterial_klvc7")
@@ -49,5 +49,5 @@ animation = &"idle"
 frame_progress = 0.4027416
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Detection" parent_id_path=PackedInt32Array(1704978046) index="0" unique_id=1962781716]
-position = Vector2(-1, 4.5)
+position = Vector2(3.5, -1)
 shape = SubResource("RectangleShape2D_t4isj")

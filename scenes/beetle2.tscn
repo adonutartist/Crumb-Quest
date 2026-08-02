@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://bp7mjoo0x1jqg"]
+
+[ext_resource type="PackedScene" uid="uid://bkh6xrxmtbfg4" path="res://scenes/Creature.tscn" id="1_oo8vg"]
+[ext_resource type="Script" uid="uid://d2o72786a45vp" path="res://scripts/ant.gd" id="2_ciswa"]
+[ext_resource type="PackedScene" uid="uid://dt0nrioy4jf7s" path="res://scenes/beetle3.tscn" id="3_oo8vg"]
+[ext_resource type="Shader" uid="uid://bque1s8tmk3w4" path="res://shader/outline.gdshader" id="4_6ogak"]
+[ext_resource type="Texture2D" uid="uid://3bgfq26bme47" path="res://assets/creatures/beetle/beetle2.png" id="5_oo8vg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_klvc7"]
+shader = ExtResource("4_6ogak")
+shader_parameter/selected = false
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/outline_size = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ciswa"]
+atlas = ExtResource("5_oo8vg")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fqowg"]
+atlas = ExtResource("5_oo8vg")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wujti"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ciswa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fqowg")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t4isj"]
+size = Vector2(58, 35)
+
+[node name="Ant" unique_id=561212246 instance=ExtResource("1_oo8vg")]
+script = ExtResource("2_ciswa")
+speed = 50.0
+upgrade_cost = 1
+upgrade_scene = ExtResource("3_oo8vg")
+bite_damage = 12
+
+[node name="Sprite2D" parent="Visual" parent_id_path=PackedInt32Array(1557604593) index="0" unique_id=941488090]
+material = SubResource("ShaderMaterial_klvc7")
+sprite_frames = SubResource("SpriteFrames_wujti")
+animation = &"idle"
+frame_progress = 0.4027416
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detection" parent_id_path=PackedInt32Array(1704978046) index="0" unique_id=1962781716]
+position = Vector2(1, -0.5)
+shape = SubResource("RectangleShape2D_t4isj")

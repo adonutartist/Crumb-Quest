@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://b83uvht112pjp"]
+
+[ext_resource type="Texture2D" uid="uid://40b8xicu0xj6" path="res://assets/food/food_shadow.png" id="1_0rvn4"]
+[ext_resource type="Script" uid="uid://llm2y0sewpep" path="res://scripts/shadow.gd" id="1_jqplm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jqplm"]
+atlas = ExtResource("1_0rvn4")
+region = Rect2(0, 0, 24, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bs2fw"]
+atlas = ExtResource("1_0rvn4")
+region = Rect2(24, 0, 24, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fvdbd"]
+atlas = ExtResource("1_0rvn4")
+region = Rect2(48, 0, 24, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_arb4i"]
+atlas = ExtResource("1_0rvn4")
+region = Rect2(72, 0, 24, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tkqwg"]
+atlas = ExtResource("1_0rvn4")
+region = Rect2(96, 0, 24, 12)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_txj4k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jqplm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bs2fw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fvdbd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_arb4i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tkqwg")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 1.2
+}]
+
+[node name="Shadow" type="Node2D" unique_id=1047003284]
+script = ExtResource("1_jqplm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1352296358]
+position = Vector2(2.2737368e-13, 22)
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_txj4k")

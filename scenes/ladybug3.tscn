@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://b5cfrdqdp77n1"]
+
+[ext_resource type="PackedScene" uid="uid://bkh6xrxmtbfg4" path="res://scenes/Creature.tscn" id="1_ap5pu"]
+[ext_resource type="Script" uid="uid://d2o72786a45vp" path="res://scripts/ant.gd" id="2_jg3m6"]
+[ext_resource type="Shader" uid="uid://bque1s8tmk3w4" path="res://shader/outline.gdshader" id="4_746n8"]
+[ext_resource type="Texture2D" uid="uid://cr2gu4nkdifqc" path="res://assets/creatures/ladybug/ladybug3.png" id="5_ap5pu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_klvc7"]
+shader = ExtResource("4_746n8")
+shader_parameter/selected = false
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/outline_size = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jg3m6"]
+atlas = ExtResource("5_ap5pu")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y7t6j"]
+atlas = ExtResource("5_ap5pu")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wujti"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jg3m6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y7t6j")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t4isj"]
+size = Vector2(85, 72)
+
+[node name="Ant" unique_id=561212246 instance=ExtResource("1_ap5pu")]
+script = ExtResource("2_jg3m6")
+speed = 30.0
+upgrade_cost = 1
+bite_damage = 15
+
+[node name="Sprite2D" parent="Visual" parent_id_path=PackedInt32Array(1557604593) index="0" unique_id=941488090]
+material = SubResource("ShaderMaterial_klvc7")
+sprite_frames = SubResource("SpriteFrames_wujti")
+animation = &"idle"
+frame_progress = 0.4027416
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detection" parent_id_path=PackedInt32Array(1704978046) index="0" unique_id=1962781716]
+position = Vector2(-0.5, -2)
+shape = SubResource("RectangleShape2D_t4isj")
