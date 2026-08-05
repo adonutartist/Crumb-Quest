@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://n2h2qniqk83y"]
+
+[ext_resource type="Script" uid="uid://1miqgrah5k7r" path="res://scripts/cloud_shadow.gd" id="1_6u31e"]
+[ext_resource type="Texture2D" uid="uid://cg5vkjhafpdr3" path="res://assets/Tiles/cloud1_outer.png" id="1_y8t3f"]
+[ext_resource type="Texture2D" uid="uid://7aht3rfvught" path="res://assets/Tiles/cloud1_inner.png" id="2_6u31e"]
+
+[node name="CloudShadow" type="Node2D" unique_id=1535502966]
+script = ExtResource("1_6u31e")
+
+[node name="OuterShadow" type="Sprite2D" parent="." unique_id=1439835144]
+modulate = Color(1, 1, 1, 0.25882354)
+texture = ExtResource("1_y8t3f")
+
+[node name="InnerShadow" type="Sprite2D" parent="." unique_id=153808954]
+modulate = Color(1, 1, 1, 0.22745098)
+texture = ExtResource("2_6u31e")

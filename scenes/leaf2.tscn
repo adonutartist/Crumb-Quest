@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://cyru3noe4i36d"]
+
+[ext_resource type="Script" uid="uid://ppm2yll0ru74" path="res://scripts/leaf.gd" id="1_33eer"]
+[ext_resource type="Texture2D" uid="uid://inu5mpti7pb5" path="res://assets/Tiles/leaf3.png" id="2_33eer"]
+
+[node name="Leaf" type="Node2D" unique_id=321298727]
+script = ExtResource("1_33eer")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1386921281]
+position = Vector2(-9.536743e-07, 9.536743e-07)
+scale = Vector2(3.125, 3.125)
+texture = ExtResource("2_33eer")

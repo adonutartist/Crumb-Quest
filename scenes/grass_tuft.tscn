@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://nf8fltbw3fjl"]
+
+[ext_resource type="Script" uid="uid://oxb5x63pu2yp" path="res://scripts/grass_tuft.gd" id="1_153s3"]
+[ext_resource type="Texture2D" uid="uid://b8my00pangxyc" path="res://assets/Tiles/grass_left.png" id="2_qpfrt"]
+[ext_resource type="Texture2D" uid="uid://dy2cgh5tile0d" path="res://assets/Tiles/grass_right.png" id="3_pvnfs"]
+
+[node name="GrassTuft" type="Node2D" unique_id=433629655]
+scale = Vector2(2, 2)
+script = ExtResource("1_153s3")
+
+[node name="BladeLeft" type="Sprite2D" parent="." unique_id=1649420145]
+position = Vector2(-8, -14)
+texture = ExtResource("2_qpfrt")
+centered = false
+
+[node name="BladeRight" type="Sprite2D" parent="." unique_id=1161771578]
+position = Vector2(-8, -14)
+texture = ExtResource("3_pvnfs")
+centered = false
