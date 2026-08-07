@@ -10,15 +10,63 @@ var target_food: Node2D = null
 var sprite_material: ShaderMaterial
 var moving := false
 var bite_timer := 0.0
+var target_enemy: Node2D = null
+var in_combat := false
 const BITE_INTERVAL := 0.4
 const ANT_SEPARATION_DISTANCE := 18.0
 const SEPARATION_FORCE := 50.0
 func _ready():
 	add_to_group("ants")
+	GameManager.enemy_spotted.connect(_on_enemy_spotted)
 	$Detection.input_event.connect(_on_detection_input_event)
 	sprite.material = sprite.material.duplicate()
 	sprite_material = sprite.material as ShaderMaterial
+func _on_enemy_spotted(enemy):
+	if !is_instance_valid(target_enemy):
+		target_enemy = enemy
+		in_combat = true
+func find_enemy():
+	var enemies = get_tree().get_nodes_in_group("enemies")
+	if enemies.is_empty():
+		return null
+	var closest = null
+	var closest_distance = INF
+	for enemy in enemies:
+		var distance = global_position.distance_to(enemy.global_position)
+		if distance < closest_distance:
+			closest_distance = distance
+			closest = enemy
+	return closest
+func attack_enemy(delta):
+	if !is_instance_valid(target_enemy):
+		target_enemy = find_enemy()
+		if target_enemy == null:
+			in_combat = false
+			animator.stop_move()
+			moving = false
+			return
+	var distance = global_position.distance_to(target_enemy.global_position)
+	if distance > 20:
+		if !moving:
+			animator.start_move()
+			moving = true
+		var direction = global_position.direction_to(target_enemy.global_position)
+		var separation = get_separation()
+		var final_direction = (direction + separation).normalized()
+		global_position += final_direction * speed * delta
+		sprite.flip_h = direction.x < 0
+	else:
+		if moving:
+			animator.stop_move()
+			moving = false
+		bite_timer -= delta
+		if bite_timer <= 0:
+			bite_timer = BITE_INTERVAL
+			target_enemy.damage(bite_damage)
 func  _process(delta):
+	if in_combat:
+		attack_enemy(delta)
+		return
 	find_food()
 	if target_food:
 		var distance = global_position.distance_to(target_food.global_position)

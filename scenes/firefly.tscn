@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://bvrobp7vqqe7v"]
+
+[ext_resource type="Texture2D" uid="uid://cy4bwr0dqd4fa" path="res://assets/ui/anthill_glow.png" id="1_k4n6k"]
+[ext_resource type="Script" uid="uid://bfnau1bol46o2" path="res://scripts/firefly.gd" id="1_oqngd"]
+
+[node name="Firefly" type="Node2D" unique_id=1969083714]
+script = ExtResource("1_oqngd")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1106846312]
+scale = Vector2(0.11523441, 0.11523441)
+texture = ExtResource("1_k4n6k")

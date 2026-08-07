@@ -34,6 +34,10 @@
 [ext_resource type="PackedScene" uid="uid://bwgvrc4dutrcs" path="res://scenes/leaf1.tscn" id="32_b64vv"]
 [ext_resource type="PackedScene" uid="uid://cyru3noe4i36d" path="res://scenes/leaf2.tscn" id="33_agajo"]
 [ext_resource type="Script" uid="uid://ddmspp51jdee6" path="res://scripts/day_night_manager.gd" id="34_agajo"]
+[ext_resource type="Script" uid="uid://dmr00hgrdhr7x" path="res://scripts/firefly_spawner.gd" id="35_2pad8"]
+[ext_resource type="PackedScene" uid="uid://bvrobp7vqqe7v" path="res://scenes/firefly.tscn" id="36_e4yt5"]
+[ext_resource type="Script" uid="uid://ccigpfwdqnlgd" path="res://scripts/enemy_spawner.gd" id="37_x70b3"]
+[ext_resource type="PackedScene" uid="uid://chmv27a8eunpw" path="res://scenes/red_ant.tscn" id="38_5w2bu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lawxi"]
 texture = ExtResource("26_4q8dg")
@@ -4277,7 +4281,8 @@ leaf_scene = Array[PackedScene]([ExtResource("31_128ka"), ExtResource("32_b64vv"
 
 [node name="DayNightManager" type="Node" parent="." unique_id=958060184]
 script = ExtResource("34_agajo")
-day_length = 4.91
+day_length = 120.0
+night_length = 30.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1517147064]
 layer = 0
@@ -4290,4 +4295,24 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0, 0, 0.19215687, 0)
+color = Color(0, 0, 0.15686275, 0)
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=1025630884]
+layer = 0
+offset = Vector2(600, 300)
+transform = Transform2D(1, 0, 0, 1, 600, 300)
+
+[node name="Fireflies" type="Node2D" parent="CanvasLayer2" unique_id=1218699231]
+z_index = 8
+
+[node name="FireflySpawner" type="Node2D" parent="." unique_id=1274931550]
+script = ExtResource("35_2pad8")
+firefly_scene = ExtResource("36_e4yt5")
+
+[node name="Enemies" type="Node2D" parent="." unique_id=1327654886]
+z_index = 5
+
+[node name="EnemySpawner" type="Node2D" parent="." unique_id=209760747]
+z_index = 5
+script = ExtResource("37_x70b3")
+red_ant_scene = ExtResource("38_5w2bu")

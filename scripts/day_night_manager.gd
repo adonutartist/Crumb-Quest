@@ -2,6 +2,7 @@ extends Node
 signal day_started
 signal night_started
 @onready var overlay: ColorRect = $"../CanvasLayer/NightOverlay"
+@onready var fireflies = $"../FireflySpawner"
 @export var day_length := 20.0
 @export var night_length := 60.0
 var is_day := true
@@ -26,6 +27,7 @@ func start_day():
 	var tween = create_tween()
 	tween.tween_property(overlay, "color", new_color, 3.0)
 	print("DAY", day_count)
+	fireflies.clear_fireflies()
 	day_started.emit()
 func  start_night():
 	is_day = false
@@ -35,4 +37,5 @@ func  start_night():
 	var tween = create_tween()
 	tween.tween_property(overlay, "color", new_color, 3.0)
 	print("NIGHT")
+	fireflies.spawn_fireflies()
 	night_started.emit()

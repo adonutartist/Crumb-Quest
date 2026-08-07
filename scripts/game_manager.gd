@@ -2,6 +2,7 @@ extends  Node
 var crumbs := 0
 var selected_creature = null
 signal creature_selected(creature)
+signal enemy_spotted(enemy)
 func add_crumbs(amount: int):
 	crumbs += amount
 	print("Crumbs:", crumbs)

@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://chmv27a8eunpw"]
+
+[ext_resource type="PackedScene" uid="uid://bkh6xrxmtbfg4" path="res://scenes/Creature.tscn" id="1_jugv8"]
+[ext_resource type="Script" uid="uid://cxynkehsn3rx6" path="res://scripts/red_ant.gd" id="2_mg42j"]
+[ext_resource type="Shader" uid="uid://bque1s8tmk3w4" path="res://shader/outline.gdshader" id="4_qcct5"]
+[ext_resource type="Texture2D" uid="uid://ca872asty0op8" path="res://assets/creatures/red_ant/redant1.png" id="5_jugv8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_klvc7"]
+shader = ExtResource("4_qcct5")
+shader_parameter/selected = false
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/outline_size = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h5rsy"]
+atlas = ExtResource("5_jugv8")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ekpnp"]
+atlas = ExtResource("5_jugv8")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wujti"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h5rsy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ekpnp")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t4isj"]
+size = Vector2(25, 13)
+
+[node name="Ant" unique_id=561212246 instance=ExtResource("1_jugv8")]
+script = ExtResource("2_mg42j")
+
+[node name="Sprite2D" parent="Visual" parent_id_path=PackedInt32Array(1557604593) index="0" unique_id=941488090]
+material = SubResource("ShaderMaterial_klvc7")
+sprite_frames = SubResource("SpriteFrames_wujti")
+animation = &"idle"
+frame_progress = 0.4027416
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detection" parent_id_path=PackedInt32Array(1704978046) index="0" unique_id=1962781716]
+position = Vector2(-3.5, -0.5)
+shape = SubResource("RectangleShape2D_t4isj")
