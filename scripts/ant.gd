@@ -3,6 +3,7 @@ extends Node2D
 @export var upgrade_cost := 20
 @export var upgrade_scene: PackedScene
 @export var bite_damage := 4
+@export var max_evolution := false
 var level := 1
 var target_food: Node2D = null
 @onready var animator = $Visual
@@ -12,6 +13,10 @@ var moving := false
 var bite_timer := 0.0
 var target_enemy: Node2D = null
 var in_combat := false
+var chomp_sound_timer := 0.0
+const CHOMP_SOUND_INTERVAL := 0.75
+const CHOMP_SOUND_MIN := 0.9
+const CHOMP_SOUND_MAX := 1.4
 const BITE_INTERVAL := 0.4
 const ANT_SEPARATION_DISTANCE := 18.0
 const SEPARATION_FORCE := 50.0
@@ -21,6 +26,9 @@ func _ready():
 	$Detection.input_event.connect(_on_detection_input_event)
 	sprite.material = sprite.material.duplicate()
 	sprite_material = sprite.material as ShaderMaterial
+	
+	randomize()
+	chomp_sound_timer = randf_range(CHOMP_SOUND_MIN, CHOMP_SOUND_MAX)
 func _on_enemy_spotted(enemy):
 	if !is_instance_valid(target_enemy):
 		target_enemy = enemy
@@ -64,6 +72,8 @@ func attack_enemy(delta):
 			bite_timer = BITE_INTERVAL
 			target_enemy.damage(bite_damage)
 func  _process(delta):
+	if chomp_sound_timer > 0:
+		chomp_sound_timer -= delta
 	if in_combat:
 		attack_enemy(delta)
 		return
@@ -88,6 +98,9 @@ func  _process(delta):
 				if bite_timer <= 0:
 					bite_timer = BITE_INTERVAL
 					target_food.damage(bite_damage)
+					if chomp_sound_timer <= 0:
+						AudioManager.play_sfx("chomp")
+						chomp_sound_timer = randf_range(CHOMP_SOUND_MIN, CHOMP_SOUND_MAX)
 	else:
 		animator.stop_move()
 	if target_food and !is_instance_valid(target_food):

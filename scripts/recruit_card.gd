@@ -27,7 +27,10 @@ func _pressed():
 		tween.tween_property(self, "scale", Vector2(1.05, 1.05), 0.05)
 		tween.tween_property(self, "scale", Vector2.ONE, 0.04)
 		GameManager.crumbs -= cost
+		AudioManager.play_sfx("splat")
 		spawn_insect()
+		await  get_tree().create_timer(0.10).timeout
+		AudioManager.play_sfx("spawn_evolve")
 	else:
 		var shake_tween = create_tween()
 		shake_tween.set_trans(Tween.TRANS_SINE)

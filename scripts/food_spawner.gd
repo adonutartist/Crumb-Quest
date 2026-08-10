@@ -47,12 +47,11 @@ func spawn_food():
 	shadow.position = spawn_positon
 	get_parent().get_node("Foods").add_child(shadow)
 	food.position = Vector2(spawn_positon.x, -500)
-	food.target_y = spawn_positon.y
+	food.set_target_y(spawn_positon.y)
 	food.shadow = shadow
 	get_parent().get_node("Foods").add_child(food)
 
 func get_valid_position():
-	print("checking", get_tree().get_nodes_in_group("food").size(), "food")
 	for i in range(50):
 		var pos = Vector2(randf_range(AREA_LEFT, AREA_RIGHT), randf_range(AREA_TOP, AREA_BOTTOM))
 		var valid = true

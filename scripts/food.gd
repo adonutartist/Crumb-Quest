@@ -10,7 +10,8 @@ var hp := 100.0
 @onready var hp_bar = $HPBar
 @onready var hp_fill = $HPBar/Fill
 const EAT_PARTICLES = preload("res://scenes/eat_particles.tscn")
-const FALL_SPEED := 250.0
+const FALL_DURATION := 1.0
+var fall_speed := 250.0
 var shadow: Node2D = null
 var collected := false
 var landed := false
@@ -20,6 +21,7 @@ func _ready():
 	add_to_group("food")
 	hp = max_hp
 	hp_bar.visible = false
+	AudioManager.play_sfx("fall")
 func  damage(amount):
 	if !landed:
 		return
@@ -44,14 +46,23 @@ func  damage(amount):
 	if hp <= 0:
 		GameManager.add_crumbs(value)
 		queue_free()
+func set_target_y(y: float):
+	target_y = y
+	var distance = abs(target_y - position.y)
+	fall_speed = distance / FALL_DURATION
 func  _process(delta):
 	if collected:
 		return
 	if position.y < target_y:
-		position.y += FALL_SPEED * delta
+		position.y += fall_speed * delta
+		var progress = inverse_lerp(-500.0, target_y, position.y)
+		if shadow:
+			shadow.update_fall_progress(progress)
 	else:
+		position.y = target_y
 		if !landed:
 			landed = true
+			AudioManager.play_sfx("land")
 			if shadow:
 				shadow.queue_free()
 func can_be_eaten_by_more():

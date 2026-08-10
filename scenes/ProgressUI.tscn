@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://bcmnt8khwd7pq"]
+
+[ext_resource type="Texture2D" uid="uid://2by6m2vohvdt" path="res://assets/ui/progressbar_outline.png" id="1_5evwt"]
+[ext_resource type="Script" uid="uid://bjbr7g20c6kt1" path="res://scripts/progress_ui.gd" id="1_od0kb"]
+[ext_resource type="Texture2D" uid="uid://nl4gagu8vcgt" path="res://assets/ui/progressbar_fill.png" id="2_ycw8b"]
+[ext_resource type="Texture2D" uid="uid://b4bhft7ls8qom" path="res://assets/ui/progressbar_points.png" id="3_ycw8b"]
+
+[node name="ProgressUI" type="CanvasLayer" unique_id=474118819]
+script = ExtResource("1_od0kb")
+
+[node name="Meter" type="Control" parent="." unique_id=1544127514]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(2.5, 2.5)
+
+[node name="Outline" type="Sprite2D" parent="Meter" unique_id=874793750]
+position = Vector2(292.4, 28.400002)
+texture = ExtResource("1_5evwt")
+
+[node name="Fill" type="Sprite2D" parent="Meter" unique_id=62223252]
+position = Vector2(142.40001, 12.4)
+texture = ExtResource("2_ycw8b")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 300, 32)
+
+[node name="Checkpoint" type="Sprite2D" parent="Meter" unique_id=533608935]
+position = Vector2(292.40002, 26.399998)
+texture = ExtResource("3_ycw8b")

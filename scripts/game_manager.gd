@@ -3,6 +3,10 @@ var crumbs := 0
 var selected_creature = null
 signal creature_selected(creature)
 signal enemy_spotted(enemy)
+func _input(event):
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			AudioManager.play_sfx("poke")
 func add_crumbs(amount: int):
 	crumbs += amount
 	print("Crumbs:", crumbs)
@@ -21,3 +25,7 @@ func deselect_creature():
 	if selected_creature:
 		selected_creature.set_selected(false)
 		selected_creature = null
+func reset_game():
+	crumbs = 0
+	selected_creature = null
+	print("GAME MANAGER RESET")

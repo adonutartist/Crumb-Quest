@@ -10,6 +10,7 @@
 [node name="AntHill" type="Node2D" unique_id=199588395]
 position = Vector2(-500, 300)
 script = ExtResource("1_oqm5y")
+max_hp = 1000
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2082825872]
 material = SubResource("CanvasItemMaterial_xpm4y")

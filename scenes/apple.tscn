@@ -11,7 +11,7 @@ height = 46.0
 
 [node name="Apple" type="Area2D" unique_id=12079784]
 script = ExtResource("1_a7wfc")
-value = 3
+value = 40
 max_hp = 250.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1883903606]

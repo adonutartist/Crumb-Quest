@@ -11,7 +11,7 @@ height = 36.0
 
 [node name="Nachos" type="Area2D" unique_id=12079784]
 script = ExtResource("1_k5um8")
-value = 7
+value = 100
 max_hp = 500.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1883903606]

@@ -15,7 +15,6 @@
 [ext_resource type="Texture2D" uid="uid://dif4l0mh7m7uk" path="res://assets/ui/blackant.png" id="11_44lqw"]
 [ext_resource type="Script" uid="uid://ckudhonoq5alt" path="res://scripts/cursor.gd" id="11_h1bdy"]
 [ext_resource type="PackedScene" uid="uid://dpk6f81qqt61k" path="res://scenes/cursor.tscn" id="11_i4b1j"]
-[ext_resource type="Texture2D" uid="uid://cj8vi3hl3c06w" path="res://assets/ui/redant.png" id="12_dwmkc"]
 [ext_resource type="Texture2D" uid="uid://c7cgafwqbbeqi" path="res://assets/ui/Normal Texture.png" id="12_nrtoj"]
 [ext_resource type="Texture2D" uid="uid://d111aiv8f2q4y" path="res://assets/ui/beetle.png" id="13_30fn3"]
 [ext_resource type="Texture2D" uid="uid://c73cw3qgrstfi" path="res://assets/ui/Click Texture.png" id="13_i4b1j"]
@@ -38,8 +37,16 @@
 [ext_resource type="PackedScene" uid="uid://bvrobp7vqqe7v" path="res://scenes/firefly.tscn" id="36_e4yt5"]
 [ext_resource type="Script" uid="uid://ccigpfwdqnlgd" path="res://scripts/enemy_spawner.gd" id="37_x70b3"]
 [ext_resource type="PackedScene" uid="uid://chmv27a8eunpw" path="res://scenes/red_ant.tscn" id="38_5w2bu"]
+[ext_resource type="PackedScene" uid="uid://bcmnt8khwd7pq" path="res://scenes/ProgressUI.tscn" id="39_1bdwf"]
+[ext_resource type="PackedScene" uid="uid://6lhmk0mk3kcg" path="res://scenes/red_ant2.tscn" id="39_1w2qq"]
+[ext_resource type="PackedScene" uid="uid://gfrir7q62i4k" path="res://scenes/boss.tscn" id="39_yd118"]
+[ext_resource type="Script" uid="uid://d0084nlmtmj6s" path="res://scripts/game_over.gd" id="42_cgwb4"]
+[ext_resource type="Texture2D" uid="uid://08g5tyiyidcy" path="res://assets/ui/restart.png" id="42_lffjk"]
+[ext_resource type="Texture2D" uid="uid://d0u1kbv8icrjw" path="res://assets/ui/music_on.png" id="43_cgwb4"]
+[ext_resource type="Script" uid="uid://d3sjvha4qni5o" path="res://scripts/music_button.gd" id="43_jot8m"]
+[ext_resource type="Texture2D" uid="uid://3chuv8gl1w2v" path="res://assets/ui/music_off.png" id="43_tx6do"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lawxi"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yd118"]
 texture = ExtResource("26_4q8dg")
 0:0/0 = 0
 1:0/0 = 0
@@ -2473,7 +2480,70 @@ texture = ExtResource("26_4q8dg")
 15:60/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_txj4k"]
-sources/0 = SubResource("TileSetAtlasSource_lawxi")
+sources/0 = SubResource("TileSetAtlasSource_yd118")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cgwb4"]
+atlas = ExtResource("42_lffjk")
+region = Rect2(0, 0, 48, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tx6do"]
+atlas = ExtResource("42_lffjk")
+region = Rect2(48, 0, 48, 44)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lffjk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cgwb4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tx6do")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_im3ha"]
+atlas = ExtResource("43_tx6do")
+region = Rect2(8, 0, 76, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6fpx2"]
+atlas = ExtResource("43_tx6do")
+region = Rect2(84, 0, 76, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jot8m"]
+atlas = ExtResource("43_cgwb4")
+region = Rect2(0, 0, 49, 62)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_302v5"]
+atlas = ExtResource("43_cgwb4")
+region = Rect2(49, 0, 49, 62)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_txj4k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_im3ha")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6fpx2")
+}],
+"loop": 1,
+"name": &"music_off",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jot8m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_302v5")
+}],
+"loop": 1,
+"name": &"music_on",
+"speed": 8.0
+}]
 
 [node name="World" type="Node2D" unique_id=1421476009]
 
@@ -2545,15 +2615,7 @@ layout_mode = 2
 stretch_mode = 5
 insect_scene = ExtResource("2_1lgw5")
 insect_icon = ExtResource("11_44lqw")
-cost = 1
-
-[node name="RecruitCard2" parent="UI/RecruitPanel/VBoxContainer" unique_id=428439345 instance=ExtResource("10_c0d7e")]
-custom_minimum_size = Vector2(-180, 80)
-layout_mode = 2
-stretch_mode = 5
-insect_scene = ExtResource("2_1lgw5")
-insect_icon = ExtResource("12_dwmkc")
-cost = 1
+cost = 50
 
 [node name="RecruitCard3" parent="UI/RecruitPanel/VBoxContainer" unique_id=1784140733 instance=ExtResource("10_c0d7e")]
 custom_minimum_size = Vector2(-180, 80)
@@ -2561,7 +2623,7 @@ layout_mode = 2
 stretch_mode = 5
 insect_scene = ExtResource("13_rm3lh")
 insect_icon = ExtResource("13_30fn3")
-cost = 1
+cost = 100
 
 [node name="RecruitCard4" parent="UI/RecruitPanel/VBoxContainer" unique_id=977297566 instance=ExtResource("10_c0d7e")]
 custom_minimum_size = Vector2(-180, 80)
@@ -2569,7 +2631,7 @@ layout_mode = 2
 stretch_mode = 5
 insect_scene = ExtResource("15_yncth")
 insect_icon = ExtResource("14_dgldv")
-cost = 1
+cost = 75
 
 [node name="UpgradePopup" type="Control" parent="UI" unique_id=1127739752]
 layout_mode = 3
@@ -2577,6 +2639,7 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("15_30fn3")
+metadata/_edit_use_anchors_ = true
 
 [node name="UpgradeButton" type="TextureButton" parent="UI/UpgradePopup" unique_id=550456704]
 layout_mode = 0
@@ -2585,16 +2648,19 @@ offset_top = -30.0
 offset_right = 76.0
 offset_bottom = 34.0
 texture_normal = ExtResource("16_dgldv")
+metadata/_edit_use_anchors_ = true
 
 [node name="CostLabel" type="Label" parent="UI/UpgradePopup/UpgradeButton" unique_id=1286216580]
 layout_mode = 0
-offset_left = 35.0
-offset_top = 33.0
-offset_right = 75.0
-offset_bottom = 56.0
+offset_left = 45.0
+offset_top = 30.0
+offset_right = 85.0
+offset_bottom = 60.0
 theme_override_fonts/font = ExtResource("9_pdh0q")
+theme_override_font_sizes/font_size = 30
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="UI/UpgradePopup/UpgradeButton" unique_id=750942424]
 layout_mode = 0
@@ -2607,6 +2673,7 @@ theme_override_font_sizes/font_size = 25
 text = "EVOLVE"
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="CrumbIcon" type="Sprite2D" parent="UI/UpgradePopup/UpgradeButton" unique_id=902324271]
 position = Vector2(34, 43.000004)
@@ -4316,3 +4383,87 @@ z_index = 5
 z_index = 5
 script = ExtResource("37_x70b3")
 red_ant_scene = ExtResource("38_5w2bu")
+big_red_ant_scene = ExtResource("39_yd118")
+fat_red_ant_scene = ExtResource("39_1w2qq")
+
+[node name="ProgressUI" parent="." unique_id=474118819 instance=ExtResource("39_1bdwf")]
+layer = 2
+
+[node name="CanvasLayer3" type="CanvasLayer" parent="." unique_id=1166459023]
+layer = 5
+offset = Vector2(600, 400)
+transform = Transform2D(1, 0, 0, 1, 600, 400)
+
+[node name="GameOver" type="Control" parent="CanvasLayer3" unique_id=568989333 groups=["game_over"]]
+z_index = 10
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("42_cgwb4")
+
+[node name="Background" type="Sprite2D" parent="CanvasLayer3/GameOver" unique_id=2029588821]
+position = Vector2(66.75, -44.5)
+scale = Vector2(2.390625, 2.390625)
+texture = ExtResource("16_dgldv")
+
+[node name="ResultLabel" type="Label" parent="CanvasLayer3/GameOver" unique_id=1219546407]
+layout_mode = 0
+offset_left = -29.0
+offset_top = -103.0
+offset_right = 159.0
+offset_bottom = -69.0
+theme_override_fonts/font = ExtResource("9_pdh0q")
+theme_override_font_sizes/font_size = 31
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="FunButtonBox" type="Button" parent="CanvasLayer3/GameOver" unique_id=900446063]
+layout_mode = 0
+offset_left = -12.0
+offset_top = -15.0
+offset_right = 148.0
+offset_bottom = 15.0
+theme_override_fonts/font = ExtResource("9_pdh0q")
+theme_override_font_sizes/font_size = 22
+text = "WANNA CONTINUE?"
+metadata/_edit_use_anchors_ = true
+
+[node name="FunButton" type="AnimatedSprite2D" parent="CanvasLayer3/GameOver" unique_id=1240209653]
+position = Vector2(2, -43)
+sprite_frames = SubResource("SpriteFrames_lffjk")
+frame_progress = 0.6183199
+
+[node name="RestartButton" type="Button" parent="CanvasLayer3/GameOver" unique_id=1473369523]
+layout_mode = 0
+offset_left = 31.0
+offset_top = -61.0
+offset_right = 142.0
+offset_bottom = -23.0
+theme_override_fonts/font = ExtResource("9_pdh0q")
+theme_override_font_sizes/font_size = 30
+text = "RESTART!"
+metadata/_edit_use_anchors_ = true
+
+[node name="CanvasLayer4" type="CanvasLayer" parent="." unique_id=2021482552]
+
+[node name="Music" type="Control" parent="CanvasLayer4" unique_id=420043652]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1228.0
+offset_top = 657.0
+offset_right = 1268.0
+offset_bottom = 697.0
+
+[node name="MusicButton" type="TextureButton" parent="CanvasLayer4/Music" unique_id=1386926318]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("43_jot8m")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer4/Music/MusicButton" unique_id=1747761698]
+sprite_frames = SubResource("SpriteFrames_txj4k")
+animation = &"music_off"

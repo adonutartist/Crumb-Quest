@@ -11,6 +11,7 @@ height = 36.0
 
 [node name="Beans" type="Area2D" unique_id=12079784]
 script = ExtResource("1_lc6j1")
+value = 10
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1883903606]
 texture = ExtResource("2_7tc74")

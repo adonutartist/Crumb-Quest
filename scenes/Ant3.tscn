@@ -41,6 +41,7 @@ script = ExtResource("2_4k2gq")
 speed = 200.0
 upgrade_cost = 0
 bite_damage = 12
+max_evolution = true
 
 [node name="Sprite2D" parent="Visual" parent_id_path=PackedInt32Array(1557604593) index="0" unique_id=941488090]
 material = SubResource("ShaderMaterial_klvc7")

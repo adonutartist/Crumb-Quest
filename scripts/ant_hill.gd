@@ -21,4 +21,8 @@ func damage(amount):
 		hp_fill.modulate = Color("#ff5c5c")
 	hp_fill.region_rect.size.x = 30 * ratio
 	if hp <= 0:
-		print("Game Over")
+		var game_over = get_tree().get_first_node_in_group("game_over")
+		if game_over:
+			game_over.show_game_over(false)
+		else:
+			push_error("GameOver node not found.")

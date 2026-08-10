@@ -2,6 +2,7 @@ extends Node2D
 @export var speed := 70.0
 @export var bite_damage := 4
 @export var max_hp := 20
+@export var is_boss := false
 @onready var animator = $Visual
 @onready var sprite = $Visual/Sprite2D
 var hp := max_hp
@@ -49,4 +50,10 @@ func get_separation() -> Vector2:
 func damage(amount):
 	hp -= amount
 	if hp <= 0:
+		if is_boss:
+			var game_over = get_tree().get_first_node_in_group("game_over")
+			if game_over:
+				game_over.show_game_over(true)
+			else:
+				push_error("GameOver node not found.")
 		queue_free()

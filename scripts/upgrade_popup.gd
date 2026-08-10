@@ -17,6 +17,10 @@ func show_upgrade(ant):
 		selected_ant = null
 		visible = false
 		return
+	if ant.max_evolution:
+		selected_ant = null
+		visible = false
+		return
 	selected_ant = ant
 	visible = true
 	cost_label.text = str(ant.upgrade_cost)
@@ -40,7 +44,12 @@ func _on_upgrade_button_pressed():
 	tween.tween_property(button, "scale", Vector2.ONE, 0.04)
 	if GameManager.crumbs >= selected_ant.upgrade_cost:
 		GameManager.crumbs -= selected_ant.upgrade_cost
+		AudioManager.play_sfx("splat")
 		selected_ant.upgrade()
+		await get_tree().create_timer(0.10).timeout
+		AudioManager.play_sfx("spawn_evolve")
+		ProgressionManager.add_progress(4.0)
+		print("PROGRESS AFTER EVOLUTION:", ProgressionManager.progress)
 		visible = false
 	else:
 		var shake = create_tween()

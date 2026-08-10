@@ -11,13 +11,18 @@ config_version=5
 [application]
 
 config/name="Crumb Quest"
-run/main_scene="uid://cm7jtxy7ehq7g"
+run/main_scene="uid://eaoomtqub27w"
 config/features=PackedStringArray("4.7", "GL Compatibility")
+boot_splash/bg_color=Color(0.1584723, 0.15847233, 0.1584723, 1)
+boot_splash/image="uid://bk4qc85g60wvp"
 config/icon="res://icon.svg"
+boot_splash/minimum_display_time=5000
 
 [autoload]
 
 GameManager="*uid://5rfmnde2qr4e"
+ProgressionManager="*uid://bnvqtaqbgear"
+AudioManager="*uid://dj53ojj2jx5xg"
 
 [display]
 
@@ -35,5 +40,6 @@ textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true
 2d/snap/snap_2d_transforms_to_pixel=true
 2d/snap/snap_2d_vertices_to_pixel=true

@@ -40,7 +40,7 @@ size = Vector2(58, 35)
 [node name="Ant" unique_id=561212246 instance=ExtResource("1_oo8vg")]
 script = ExtResource("2_ciswa")
 speed = 50.0
-upgrade_cost = 1
+upgrade_cost = 150
 upgrade_scene = ExtResource("3_oo8vg")
 bite_damage = 12
 
