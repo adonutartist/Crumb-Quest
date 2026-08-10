@@ -2651,6 +2651,7 @@ texture_normal = ExtResource("16_dgldv")
 metadata/_edit_use_anchors_ = true
 
 [node name="CostLabel" type="Label" parent="UI/UpgradePopup/UpgradeButton" unique_id=1286216580]
+visible = false
 layout_mode = 0
 offset_left = 45.0
 offset_top = 30.0

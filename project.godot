@@ -15,7 +15,7 @@ run/main_scene="uid://eaoomtqub27w"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 boot_splash/bg_color=Color(0.1584723, 0.15847233, 0.1584723, 1)
 boot_splash/image="uid://bk4qc85g60wvp"
-config/icon="res://icon.svg"
+config/icon="uid://bk4qc85g60wvp"
 boot_splash/minimum_display_time=5000
 
 [autoload]
