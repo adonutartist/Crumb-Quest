@@ -18,7 +18,7 @@ func _ready():
 	music_player = AudioStreamPlayer.new()
 	add_child(music_player)
 	music_player.stream = music
-	music_player.volume_db = 0.0
+	music_player.volume_db = 1.0
 	music_player.play()
 	for i in SFX_POOL_SIZE:
 		var player = AudioStreamPlayer.new()
