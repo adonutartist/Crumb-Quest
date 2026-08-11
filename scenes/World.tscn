@@ -4639,5 +4639,7 @@ sprite_frames = SubResource("SpriteFrames_txj4k")
 animation = &"music_off"
 
 [node name="SupabaseRequest" type="HTTPRequest" parent="." unique_id=371104950]
+accept_gzip = false
 
 [node name="ChatRequest" type="HTTPRequest" parent="." unique_id=732293511]
+accept_gzip = false
