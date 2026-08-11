@@ -23,7 +23,10 @@
 [ext_resource type="Script" uid="uid://cgrpyrl3fl7rc" path="res://scripts/upgrade_popup.gd" id="15_30fn3"]
 [ext_resource type="PackedScene" uid="uid://4telk7f6lxne" path="res://scenes/ladybug.tscn" id="15_yncth"]
 [ext_resource type="Texture2D" uid="uid://bc2vr3x48fqib" path="res://assets/ui/card_bg.png" id="16_dgldv"]
+[ext_resource type="Texture2D" uid="uid://dqmpftcdg8oif" path="res://assets/ui/leaderboard.png" id="19_im3ha"]
+[ext_resource type="Texture2D" uid="uid://cy4hnf8glncp2" path="res://assets/ui/close.png" id="20_6fpx2"]
 [ext_resource type="PackedScene" uid="uid://dwlchxdpapi1r" path="res://scenes/ant_hill.tscn" id="20_dwmkc"]
+[ext_resource type="Script" uid="uid://byo0pyvwheyup" path="res://scripts/leaderboard.gd" id="20_pd53d"]
 [ext_resource type="PackedScene" uid="uid://n2h2qniqk83y" path="res://scenes/cloud_shadow.tscn" id="25_uni40"]
 [ext_resource type="Texture2D" uid="uid://chp0ncb67xrrn" path="res://assets/Tiles/environment.png" id="26_4q8dg"]
 [ext_resource type="PackedScene" uid="uid://dlqija1e5x1vm" path="res://scenes/cloud_shadow1.tscn" id="26_aqlsr"]
@@ -45,6 +48,28 @@
 [ext_resource type="Texture2D" uid="uid://d0u1kbv8icrjw" path="res://assets/ui/music_on.png" id="43_cgwb4"]
 [ext_resource type="Script" uid="uid://d3sjvha4qni5o" path="res://scripts/music_button.gd" id="43_jot8m"]
 [ext_resource type="Texture2D" uid="uid://3chuv8gl1w2v" path="res://assets/ui/music_off.png" id="43_tx6do"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mynnq"]
+atlas = ExtResource("20_6fpx2")
+region = Rect2(0, 0, 44, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e8tpv"]
+atlas = ExtResource("20_6fpx2")
+region = Rect2(44, 0, 44, 53)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pd53d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mynnq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e8tpv")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yd118"]
 texture = ExtResource("26_4q8dg")
@@ -2680,6 +2705,147 @@ position = Vector2(34, 43.000004)
 scale = Vector2(0.55346936, 0.5534694)
 texture = ExtResource("8_pdh0q")
 
+[node name="LeaderboardButton" type="TextureButton" parent="UI" unique_id=358909982]
+offset_left = 247.0
+offset_top = 568.0
+offset_right = 358.725
+offset_bottom = 677.0
+texture_normal = ExtResource("19_im3ha")
+stretch_mode = 0
+
+[node name="Leaderboard" type="Control" parent="UI" unique_id=1798737782]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("20_pd53d")
+
+[node name="Panel" type="Panel" parent="UI/Leaderboard" unique_id=1818979424]
+layout_mode = 0
+offset_left = 455.0
+offset_top = 152.0
+offset_right = 1127.0
+offset_bottom = 581.0
+
+[node name="Title" type="Label" parent="UI/Leaderboard/Panel" unique_id=1645013833]
+layout_mode = 0
+offset_left = 85.0
+offset_top = 9.0
+offset_right = 280.0
+offset_bottom = 33.0
+theme_override_colors/font_color = Color(1, 1, 0.45490196, 1)
+theme_override_fonts/font = ExtResource("9_pdh0q")
+theme_override_font_sizes/font_size = 25
+text = "Crumb Leaderboard"
+
+[node name="ChatBox" type="Label" parent="UI/Leaderboard/Panel" unique_id=648341174]
+layout_mode = 0
+offset_left = 455.0
+offset_top = 9.0
+offset_right = 575.0
+offset_bottom = 33.0
+theme_override_colors/font_color = Color(1, 1, 0.45490196, 1)
+theme_override_fonts/font = ExtResource("9_pdh0q")
+theme_override_font_sizes/font_size = 25
+text = "Chatterbox"
+
+[node name="Username" type="Label" parent="UI/Leaderboard/Panel" unique_id=760247841]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 363.0
+offset_right = 208.0
+offset_bottom = 387.0
+theme_override_fonts/font = ExtResource("9_pdh0q")
+theme_override_font_sizes/font_size = 25
+text = "Username: "
+
+[node name="Score" type="Label" parent="UI/Leaderboard/Panel" unique_id=970875255]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 333.0
+offset_right = 343.0
+offset_bottom = 363.0
+theme_override_fonts/font = ExtResource("9_pdh0q")
+theme_override_font_sizes/font_size = 25
+
+[node name="UsernameInput" type="LineEdit" parent="UI/Leaderboard/Panel" unique_id=1498315842]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 387.0
+offset_right = 258.0
+offset_bottom = 418.0
+theme_override_fonts/font = ExtResource("9_pdh0q")
+theme_override_font_sizes/font_size = 20
+placeholder_text = "Type username :>"
+
+[node name="SubmitButton" type="Button" parent="UI/Leaderboard/Panel" unique_id=2122989711]
+layout_mode = 0
+offset_left = 267.0
+offset_top = 386.0
+offset_right = 344.0
+offset_bottom = 418.0
+theme_override_fonts/font = ExtResource("9_pdh0q")
+theme_override_font_sizes/font_size = 25
+text = "Submit"
+
+[node name="LeaderboardList" type="VBoxContainer" parent="UI/Leaderboard/Panel" unique_id=1864115675]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 51.0
+offset_right = 242.0
+offset_bottom = 361.0
+
+[node name="CloseButton" type="AnimatedSprite2D" parent="UI/Leaderboard/Panel" unique_id=1994940888]
+position = Vector2(655.99994, 18.13634)
+scale = Vector2(0.5454514, 0.53344643)
+sprite_frames = SubResource("SpriteFrames_pd53d")
+frame_progress = 0.53084683
+
+[node name="CloseHitBox" type="Button" parent="UI/Leaderboard/Panel" unique_id=1853187153]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 645.0
+offset_top = 7.1363373
+offset_right = 667.0
+offset_bottom = 30.136337
+
+[node name="ChatList" type="ScrollContainer" parent="UI/Leaderboard/Panel" unique_id=228216674]
+layout_mode = 0
+offset_left = 400.0
+offset_top = 43.0
+offset_right = 661.0
+offset_bottom = 379.0
+
+[node name="Messages" type="VBoxContainer" parent="UI/Leaderboard/Panel/ChatList" unique_id=1381950117]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MessageInput" type="LineEdit" parent="UI/Leaderboard/Panel" unique_id=16837092]
+layout_mode = 0
+offset_left = 396.0
+offset_top = 384.0
+offset_right = 620.0
+offset_bottom = 417.0
+theme_override_fonts/font = ExtResource("9_pdh0q")
+theme_override_font_sizes/font_size = 18
+placeholder_text = "Type a message :]"
+
+[node name="SendButton" type="Button" parent="UI/Leaderboard/Panel" unique_id=1648566913]
+layout_mode = 0
+offset_left = 627.0
+offset_top = 385.0
+offset_right = 662.0
+offset_bottom = 417.0
+theme_override_fonts/font = ExtResource("9_pdh0q")
+theme_override_font_sizes/font_size = 17
+text = "➤"
+
+[node name="Line2D" type="Line2D" parent="UI/Leaderboard/Panel" unique_id=913163125]
+position = Vector2(95, -2)
+points = PackedVector2Array(272, 19, 273, 403)
+default_color = Color(0.0035130894, 0.0035130905, 0.0035130894, 0.5529412)
+
 [node name="Creature" parent="." unique_id=747588286 instance=ExtResource("4_0uv0p")]
 
 [node name="Effects" type="Node2D" parent="." unique_id=462188091]
@@ -2703,7 +2869,7 @@ z_index = 6
 position = Vector2(-2181, -339)
 
 [node name="CloudShadow3" parent="CloudShadows" unique_id=1743354583 instance=ExtResource("25_uni40")]
-position = Vector2(-701, -95)
+position = Vector2(-705, -131)
 
 [node name="CloudShadow5" parent="CloudShadows" unique_id=1535502966 instance=ExtResource("26_aqlsr")]
 position = Vector2(-1306, 347)
@@ -4363,6 +4529,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0.15686275, 0)
+metadata/_edit_lock_ = true
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=1025630884]
 layer = 0
@@ -4403,6 +4570,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("42_cgwb4")
+metadata/_edit_lock_ = true
 
 [node name="Background" type="Sprite2D" parent="CanvasLayer3/GameOver" unique_id=2029588821]
 position = Vector2(66.75, -44.5)
@@ -4467,3 +4635,5 @@ script = ExtResource("43_jot8m")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer4/Music/MusicButton" unique_id=1747761698]
 sprite_frames = SubResource("SpriteFrames_txj4k")
 animation = &"music_off"
+
+[node name="SupabaseRequest" type="HTTPRequest" parent="." unique_id=371104950]
