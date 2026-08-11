@@ -2680,9 +2680,9 @@ of red ants bite you :3
 
 also yeh they target your ant hill which is present on 
 the bottom left of the screen if tht gets destroyed you
-are cooked :]
-Thanks of reading and viewing my game! Made for beest 
-by Nemo Donut :3"
+are cooked :] there's a chatbox and leaderboard too its 
+js near the anthill. Thanks for reading and viewing my
+ game! Made for beest by Nemo Donut :3"
 
 [node name="CloseButton" type="AnimatedSprite2D" parent="TutorialPopup/Panel" unique_id=333163373]
 position = Vector2(416.99994, 15.000002)

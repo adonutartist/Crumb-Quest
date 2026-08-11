@@ -2716,8 +2716,10 @@ stretch_mode = 0
 [node name="Leaderboard" type="Control" parent="UI" unique_id=1798737782]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -61.0
+offset_top = 1.0
+offset_right = -21.0
+offset_bottom = 41.0
 script = ExtResource("20_pd53d")
 
 [node name="Panel" type="Panel" parent="UI/Leaderboard" unique_id=1818979424]
@@ -2729,9 +2731,9 @@ offset_bottom = 581.0
 
 [node name="Title" type="Label" parent="UI/Leaderboard/Panel" unique_id=1645013833]
 layout_mode = 0
-offset_left = 85.0
+offset_left = 72.0
 offset_top = 9.0
-offset_right = 280.0
+offset_right = 267.0
 offset_bottom = 33.0
 theme_override_colors/font_color = Color(1, 1, 0.45490196, 1)
 theme_override_fonts/font = ExtResource("9_pdh0q")
@@ -2740,10 +2742,10 @@ text = "Crumb Leaderboard"
 
 [node name="ChatBox" type="Label" parent="UI/Leaderboard/Panel" unique_id=648341174]
 layout_mode = 0
-offset_left = 455.0
-offset_top = 9.0
-offset_right = 575.0
-offset_bottom = 33.0
+offset_left = 441.0
+offset_top = 8.0
+offset_right = 561.0
+offset_bottom = 32.0
 theme_override_colors/font_color = Color(1, 1, 0.45490196, 1)
 theme_override_fonts/font = ExtResource("9_pdh0q")
 theme_override_font_sizes/font_size = 25
@@ -2772,17 +2774,17 @@ theme_override_font_sizes/font_size = 25
 layout_mode = 0
 offset_left = 8.0
 offset_top = 387.0
-offset_right = 258.0
+offset_right = 234.0
 offset_bottom = 418.0
 theme_override_fonts/font = ExtResource("9_pdh0q")
 theme_override_font_sizes/font_size = 20
-placeholder_text = "Type username :>"
+placeholder_text = "Type ur username :>"
 
 [node name="SubmitButton" type="Button" parent="UI/Leaderboard/Panel" unique_id=2122989711]
 layout_mode = 0
-offset_left = 267.0
+offset_left = 243.0
 offset_top = 386.0
-offset_right = 344.0
+offset_right = 320.0
 offset_bottom = 418.0
 theme_override_fonts/font = ExtResource("9_pdh0q")
 theme_override_font_sizes/font_size = 25
@@ -2791,8 +2793,8 @@ text = "Submit"
 [node name="LeaderboardList" type="VBoxContainer" parent="UI/Leaderboard/Panel" unique_id=1864115675]
 layout_mode = 0
 offset_left = 8.0
-offset_top = 51.0
-offset_right = 242.0
+offset_top = 44.0
+offset_right = 313.0
 offset_bottom = 361.0
 
 [node name="CloseButton" type="AnimatedSprite2D" parent="UI/Leaderboard/Panel" unique_id=1994940888]
@@ -2811,10 +2813,10 @@ offset_bottom = 30.136337
 
 [node name="ChatList" type="ScrollContainer" parent="UI/Leaderboard/Panel" unique_id=228216674]
 layout_mode = 0
-offset_left = 400.0
+offset_left = 352.0
 offset_top = 43.0
 offset_right = 661.0
-offset_bottom = 379.0
+offset_bottom = 368.0
 
 [node name="Messages" type="VBoxContainer" parent="UI/Leaderboard/Panel/ChatList" unique_id=1381950117]
 layout_mode = 2
@@ -2823,7 +2825,7 @@ size_flags_vertical = 3
 
 [node name="MessageInput" type="LineEdit" parent="UI/Leaderboard/Panel" unique_id=16837092]
 layout_mode = 0
-offset_left = 396.0
+offset_left = 352.0
 offset_top = 384.0
 offset_right = 620.0
 offset_bottom = 417.0
@@ -2842,7 +2844,7 @@ theme_override_font_sizes/font_size = 17
 text = "➤"
 
 [node name="Line2D" type="Line2D" parent="UI/Leaderboard/Panel" unique_id=913163125]
-position = Vector2(95, -2)
+position = Vector2(63, -2)
 points = PackedVector2Array(272, 19, 273, 403)
 default_color = Color(0.0035130894, 0.0035130905, 0.0035130894, 0.5529412)
 
@@ -4637,3 +4639,5 @@ sprite_frames = SubResource("SpriteFrames_txj4k")
 animation = &"music_off"
 
 [node name="SupabaseRequest" type="HTTPRequest" parent="." unique_id=371104950]
+
+[node name="ChatRequest" type="HTTPRequest" parent="." unique_id=732293511]

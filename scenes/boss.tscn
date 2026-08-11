@@ -34,26 +34,25 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t4isj"]
-size = Vector2(25, 13)
+size = Vector2(98, 62)
 
 [node name="Ant" unique_id=561212246 instance=ExtResource("1_qnbj4")]
 script = ExtResource("2_r3bxh")
 speed = 100.0
 bite_damage = 30
-max_hp = 1000
+max_hp = 5000
 is_boss = true
 
 [node name="Visual" parent="." index="0" unique_id=1557604593]
-scale = Vector2(2, 2)
+scale = Vector2(2.5, 2.5)
 
 [node name="Sprite2D" parent="Visual" index="0" unique_id=941488090]
 material = SubResource("ShaderMaterial_klvc7")
 position = Vector2(1.1920929e-07, -1.1368684e-13)
-scale = Vector2(32.10156, 32.10156)
 sprite_frames = SubResource("SpriteFrames_wujti")
 animation = &"idle"
 frame_progress = 0.4027416
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Detection" parent_id_path=PackedInt32Array(1704978046) index="0" unique_id=1962781716]
-position = Vector2(-3.5, -0.5)
+position = Vector2(-5, 18)
 shape = SubResource("RectangleShape2D_t4isj")

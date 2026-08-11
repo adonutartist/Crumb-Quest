@@ -40,7 +40,7 @@ size = Vector2(25, 13)
 script = ExtResource("2_l4hn4")
 speed = 100.0
 bite_damage = 10
-max_hp = 100
+max_hp = 500
 
 [node name="Sprite2D" parent="Visual" parent_id_path=PackedInt32Array(1557604593) index="0" unique_id=941488090]
 material = SubResource("ShaderMaterial_klvc7")
