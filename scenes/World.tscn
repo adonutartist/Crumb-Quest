@@ -2836,12 +2836,13 @@ placeholder_text = "Type a message :]"
 [node name="SendButton" type="Button" parent="UI/Leaderboard/Panel" unique_id=1648566913]
 layout_mode = 0
 offset_left = 627.0
-offset_top = 385.0
+offset_top = 384.0
 offset_right = 662.0
 offset_bottom = 417.0
 theme_override_fonts/font = ExtResource("9_pdh0q")
-theme_override_font_sizes/font_size = 17
-text = "➤"
+theme_override_font_sizes/font_size = 25
+text = ">"
+icon_alignment = 1
 
 [node name="Line2D" type="Line2D" parent="UI/Leaderboard/Panel" unique_id=913163125]
 position = Vector2(63, -2)
